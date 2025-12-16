@@ -1,32 +1,33 @@
 <div class="author">
-  <h1 class="author__heading">Hi, I am Raddy.</h1>
-  <p class="author__body">Web developer and content creator.</p>
+  <h1 class="author__heading">Welcome to My Creative Space</h1>
+  <p class="author__body">Exploring ideas, sharing stories, and building amazing things.</p>
 </div>
 
-<img src="/img/hero-image.webp" alt="person looking out through window" class="hero-image" width="981" height="528">
+<img src="/img/hero-image.webp" alt="Inspiring view through window" class="hero-image" width="981" height="528">
 
 <section class="articles">
-  <h2 class="articles__heading">Latest Posts</h2>
+  <h2 class="articles__heading">Latest Stories</h2>
 
-  <ul class="article-ul">
-    <% data.forEach(post => { %>
-      <li>
-        <a href="/post/<%= post._id %>">
-          <span><%= post.title %></span>
-          <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
-        </a>
-      </li>
-    <% }) %>
-  </ul>
+  <% if (data.length > 0) { %>
+    <ul class="article-ul">
+      <% data.forEach(post => { %>
+        <li>
+          <a href="/post/<%= post._id %>">
+            <span><%= post.title %></span>
+            <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
 
-
-  <% if (nextPage !== null) { %>
-    <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% if (nextPage !== null) { %>
+      <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% } %>
+  <% } else { %>
+    <div style="text-align: center; padding: 60px 20px; background: #f9f9f9; border-radius: 10px; margin-top: 40px;">
+      <h3 style="color: #666; margin-bottom: 15px;">No posts yet!</h3>
+      <p style="color: #888; margin-bottom: 25px;">Start creating amazing content by adding your first blog post.</p>
+      <a href="/admin" style="display: inline-block; background: #b30000; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Go to Admin Panel</a>
+    </div>
   <% } %>
- 
-
-  
-
-
-
 </section>
