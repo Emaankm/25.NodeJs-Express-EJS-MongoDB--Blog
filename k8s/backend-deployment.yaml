@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: <emaan12>/blog-backend:latest
+        image: emaan12/blog-backend:latest
         ports:
         - containerPort: 5000
         env:
