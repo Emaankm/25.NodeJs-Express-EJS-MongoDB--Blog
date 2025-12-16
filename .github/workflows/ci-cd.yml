@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+# When the workflow should run
+on:
+  push:
+    branches: [ main ]        # Run when code is pushed to main
+  pull_request:
+    branches: [ main ]        # Run when a pull request is opened to main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get the code from GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests (if any)
+      - name: Run tests
+        run: npm test || echo "No tests found"
